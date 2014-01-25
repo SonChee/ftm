@@ -99,10 +99,6 @@ usercourse_list = [
                     [7, 2],
                     [8, 3]
                   ]
-                  
-usercourse_list.each do |uc|
-  UserCourse.create(user_id: uc[0], course_id: uc[1])
-end
 
 assignment_list = [
                     [1, 2, 2],
