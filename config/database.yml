@@ -5,8 +5,8 @@ development:
   database: FTM
   pool: 5
   username: root
-  password: 
-  socket: /var/run/mysqld/mysqld.sock
+  password: 123456'
+  host: localhost
 
 test:
   adapter: mysql2 
@@ -15,8 +15,8 @@ test:
   database: FTM1
   pool: 5
   username: root
-  password: 
-  socket: /var/run/mysqld/mysqld.sock
+  password: 123456
+  host: localhost
 
 production:
   adapter: sqlite3
