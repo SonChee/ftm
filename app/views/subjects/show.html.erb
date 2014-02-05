@@ -1,0 +1,25 @@
+<% provide(:title, @subject.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1> Subject: <%= @subject.name %> </h1>
+      <p><%= @subject.description %></p>
+      <%= link_to "Edit", edit_subject_path(@subject) %>  
+    </section>
+      
+    <section>
+      <%= render 'shared/task_form' %>
+    </section>
+  </aside>
+
+  <div class="span8">
+    <% if @subject.tasks.any? %>
+      <h3>Tasks (<%= @subject.tasks.count %>)</h3>
+      <ol class="microposts">
+        <%= render @tasks %>
+      </ol>
+    <% end %>
+  </div>
+  
+</div>
+
