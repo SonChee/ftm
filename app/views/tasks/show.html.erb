@@ -1,0 +1,11 @@
+<% provide(:title, @task.name) %>
+<div class="row">
+  <aside class="span6 offset3">
+    <section>
+      <h1> Task: <%= @task.name %> </h1>
+      <p> Subject: <%= @task.subject.name %> </p>
+      <p><%= @task.description %></p>
+      <%= link_to "Edit", edit_task_path(@task) %>  
+    </section>
+  </aside>
+</div>
