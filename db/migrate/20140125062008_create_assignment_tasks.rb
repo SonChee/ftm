@@ -3,6 +3,7 @@ class CreateAssignmentTasks < ActiveRecord::Migration
     create_table :assignment_tasks do |t|
       t.integer :assignment_subject_id
       t.integer :task_id
+      t.integer :order
       t.integer :status_id
 
       t.timestamps

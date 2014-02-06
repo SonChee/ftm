@@ -8,4 +8,7 @@ Ftm::Application.routes.draw do
   namespace :supervisor do
 
   end
+  
+  resources :subjects
+  resources :tasks
 end
