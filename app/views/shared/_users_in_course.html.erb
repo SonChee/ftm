@@ -1,0 +1,8 @@
+<h3>All users</h3>
+<% if @assignments.any? %>
+  <ol class="trainees">
+    <% @assignments.each do |assign| %>
+    	<%= render 'shared/user_item', user: assign.user %>
+  	<% end %>
+  </ol>
+<% end %>
