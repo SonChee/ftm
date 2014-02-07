@@ -1,0 +1,32 @@
+<% provide(:title, "All Courses") %>
+<h1><%= yield(:title)%></h1>
+
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th>Course ID</th>
+      <th>Course Name</th>
+      <th>Course Description</th>
+      <th colspan="3" >Progressions</th>
+      <th colspan="2" >Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+    <tr>
+      <td><%=  course.id %></td>
+      <td><%= link_to course.name, @course %></td>
+      <td><%= course.description%></td>
+      <td class="form-actions"><%= link_to 'Start Progression', '#', class: "btn btn-mini btn-primary"%></td>
+      <td class="form-actions"><%= link_to 'Finish Progression', '#', class: "btn btn-mini btn-success"%></td>
+      <td class="form-actions"><%= link_to 'Force', '#', class: "btn btn-mini btn-inverse"%></td>
+      <td class="form-actions"><%= link_to 'Edit', '#', class:  "btn btn-mini"%></td>
+      <td class="form-actions"><%= link_to 'Delete','#', class: "btn btn-mini btn-danger"%></td>
+    </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+<%= will_paginate %>
