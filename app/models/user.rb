@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   scope :tranee_users, -> { where(permission: 1)}
 
   has_many :assignments
+  has_one :assignment, -> { where(status_id: 2)}
 
   def User.new_remember_token
    SecureRandom.urlsafe_base64

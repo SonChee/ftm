@@ -1,0 +1,56 @@
+<h5>Course Name : <%= @course.name %></h5>
+<h5>Course Description : <%= @course.description %></h5>
+
+<% unless current_user.assignment.nil? %>
+  <div class="list_subject">
+    <% current_user.assignment.assignment_subjects.each do |assignment_subject| %>
+      <div class="subject-name" id="__subject_<%= assignment_subject.id %>" data-assignmentsubjectid="<%= assignment_subject.id %>" data-subjectid="<%= assignment_subject.subject.id %>" data-statusid="<%= assignment_subject.status_id %>" style="color:blue"><%= assignment_subject.subject.name %></div>
+    <% end %>
+  </div>
+  <div>
+    <% current_user.assignment.assignment_subjects.each do |assignment_subject| %>
+      <ol class="task" id="__tasks_<%= assignment_subject.subject.id %>">
+        <% if assignment_subject.assignment_tasks.any? %>
+          <% assignment_subject.assignment_tasks.each do |ass_tas| %>
+            <h6>+ <%= ass_tas.task.name %> : <%= ass_tas.task.description %></h6>
+            <h6>Status task : <%= ass_tas.status.name %></h6>
+          <% end %>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
+<% end %>
+<script>
+$(document).ready(function() {
+  $('.subject-name').each(function() {
+    var assignment_subject_id = $(this).data('assignmentsubjectid');
+    var subject_id = $(this).data('subjectid');
+    var status_id = $(this).data('statusid');
+    changeSubjectColor(assignment_subject_id, status_id);
+    $('ol[id^="__tasks_"]').each(function() {
+      $(this).hide();
+    });
+    $(this).click(function() {
+      on_click_subject(subject_id);
+    });
+  });   
+});
+function on_click_subject(subject_id) {
+  $('ol[id^="__tasks_"]').each(function() {
+    $(this).hide();
+  });
+  $('ol[id="__tasks_' + subject_id + '"]').show();
+}
+
+function changeSubjectColor(assignment_subject_id, status_id) {
+  if(status_id == 1){
+    var bcolor= 'blue';
+  }else{
+    if(status_id == 2)
+      var bcolor= 'red';
+    else
+      var bcolor= 'gray';
+  }
+  $('#__subject_' + assignment_subject_id).css('background-color', bcolor);
+}
+</script>

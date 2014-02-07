@@ -1,7 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :subject
+  has_many :assignment_tasks
   
   validates :name, presence: true
-  validates :subject_id, presence: true
-  validates :description, presence: true
 end
