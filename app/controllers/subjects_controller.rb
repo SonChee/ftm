@@ -25,6 +25,7 @@ class SubjectsController < ApplicationController
 
   def edit
     @subject = Subject.find params[:id]
+    15.times {@subject.tasks.build}
   end
   
   def update
@@ -58,7 +59,7 @@ class SubjectsController < ApplicationController
   private
   def subject_params
     params.require(:subject).permit(:name, :description, 
-                                    tasks_attributes: [:name])
+                                    tasks_attributes: [:id, :name])
   end
   
 end
