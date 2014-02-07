@@ -6,22 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # ruby encoding: utf-8
-=begin
-user_list = [
-              ["Thanh", "lmt@framgia.com",  "admin123456@xyz!", 3],
-              ["Phi",   "pvp@framgia.com",  "admin123456@xyz!", 3],
-              ["Son",   "cds@framgia.com",  "admin123456@xyz!", 3],
-              ["Quang", "vnq@framgia.com",  "admin123456@xyz!", 1],
-              ["Duc",   "nqd@framgia.com",  "admin123456@xyz!", 1],
-              ["Anh",   "nvta@framgia.com", "admin123456@xyz!", 2],
-              ["Thoai", "tvt@framgia.com",  "admin123456@xyz!", 2],
-              ["Tan",   "nht@framgia.com",  "admin123456@xyz!", 3]
-            ]
 
-user_list.each do |u|
-  User.create(name: u[0], email: u[1], password: u[2], permission: u[3])
-end
-=end
 
 User.create(:name => 'Admin',
             :email => 'larryritchie.ceo@gmail.com',
@@ -67,7 +52,6 @@ subject_list.each do |s|
   Subject.create(name: s[0], description: s[1])
 end
 
-
 task_list = [
               ["Chapter 1", 1, "From zero to deploy"],
               ["Chapter 2", 1, "A demo app"],
@@ -84,7 +68,7 @@ task_list = [
             ]
 
 task_list.each do |t|
-  Task.create(name: t[0], subject_id: t[1], description: t[2])
+  Task.create(name: t[0], subject_id: t[1])
 end
 
 status_list = [
@@ -94,7 +78,7 @@ status_list = [
               ]
 
 status_list.each do |stt|
-  Task.create(name: stt[0], description: stt[1])
+  Status.create(name: stt[0], description: stt[1])
 end
 
 activity_list = [
@@ -111,16 +95,20 @@ activity_list.each do |ac|
                   task_id:ac[3], status_id: ac[4])
 end
 
-usercourse_list = [
+coursesubject_list = [
+                    [1, 1],
                     [1, 2],
+                    [1, 3],
+                    [2, 1],
                     [2, 2],
+                    [3, 1],
                     [3, 2],
-                    [4, 2],
-                    [5, 2],
-                    [6, 1],
-                    [7, 2],
-                    [8, 3]
+                    [3, 3]
                   ]
+
+coursesubject_list.each do |cs|
+  CourseSubject.create(course_id: cs[0], subject_id: cs[1])
+end
 
 assignment_list = [
                     [1, 2, 2],
