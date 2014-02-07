@@ -6,21 +6,43 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # ruby encoding: utf-8
-
+=begin
 user_list = [
-              ["Thanh", "lmt@framgia.com",  "123456"],
-              ["Phi",   "pvp@framgia.com",  "123456"],
-              ["Son",   "cds@framgia.com",  "123456"],
-              ["Quang", "vnq@framgia.com",  "123456"],
-              ["Duc",   "nqd@framgia.com",  "123456"],
-              ["Anh",   "nvta@framgia.com", "123456"],
-              ["Thoai", "tvt@framgia.com",  "123456"],
-              ["Tan",   "nht@framgia.com",  "123456"]
+              ["Thanh", "lmt@framgia.com",  "admin123456@xyz!", 3],
+              ["Phi",   "pvp@framgia.com",  "admin123456@xyz!", 3],
+              ["Son",   "cds@framgia.com",  "admin123456@xyz!", 3],
+              ["Quang", "vnq@framgia.com",  "admin123456@xyz!", 1],
+              ["Duc",   "nqd@framgia.com",  "admin123456@xyz!", 1],
+              ["Anh",   "nvta@framgia.com", "admin123456@xyz!", 2],
+              ["Thoai", "tvt@framgia.com",  "admin123456@xyz!", 2],
+              ["Tan",   "nht@framgia.com",  "admin123456@xyz!", 3]
             ]
 
 user_list.each do |u|
-  User.create(name: u[0], email: u[1], password_digest: u[2])
+  User.create(name: u[0], email: u[1], password: u[2], permission: u[3])
 end
+=end
+
+User.create(:name => 'Admin',
+            :email => 'larryritchie.ceo@gmail.com',
+            :profile => 'Site Administrator',
+            :permission => 3,
+            :password => 'admin1234!',
+            :password_confirmation => 'admin1234!')
+
+User.create(:name => 'Supervisor',
+            :email => 'kellychan@gmail.com',
+            :profile => 'Site Supervisor',
+            :permission => 2,
+            :password => 'supervisor1234!',
+            :password_confirmation => 'supervisor1234!')
+
+User.create(:name => 'Trainee',
+            :email => 'kellylane@gmail.com',
+            :profile => 'Site Trainee',
+            :permission => 1,
+            :password => 'trainee1234!',
+            :password_confirmation => 'trainee1234!')
 
 course_list = [
                 ["Training 20131201", "Khóa training 01/12/2013"],
