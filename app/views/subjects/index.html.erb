@@ -1,7 +1,29 @@
 <% provide(:title, 'Subject list') %>
 <h1>Subject list</h1>
-<ul class="users">
-  <% @subjects.each do |subject| %>
-    <%= render "subjects/subject", subject: subject %>
-  <% end %>
-</ul>
+
+<%= link_to '+ Add subject', new_subject_path, class: "btn btn-medium btn-primary"%></td>
+
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th>Course ID</th>
+      <th>Course Name</th>
+      <th>Course Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @subjects.each do |subject| %>
+    <tr>
+      <td><%= subject.id %></td>
+      <td><%= link_to subject.name, subject %></td>
+      <td><%= subject.description%></td>
+      <td><%= link_to "Delete", subject, method: :delete,
+              data: { confirm: "You sure?" }, title: subject.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+<%= will_paginate %>

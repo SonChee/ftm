@@ -1,17 +1,18 @@
 class SubjectsController < ApplicationController
   def index
-    @subjects = Subject.all
+    @subjects = Subject.paginate page: params[:page], per_page: 3
   end
   
   def new
     @subject = Subject.new
+    15.times {@subject.tasks.build}
   end
   
   def create
-    @subject = Subject.new subject_params
+    @subject = Subject.create subject_params
     if @subject.save
       flash.now[:success] = "Created subject"
-      redirect_to root_path
+      redirect_to subjects_path
     else
       redirect_to root_path
     end
@@ -20,7 +21,6 @@ class SubjectsController < ApplicationController
   def show
     @subject = Subject.find params[:id]
     @tasks = @subject.tasks
-    @task = @subject.tasks.build
   end
 
   def edit
@@ -57,7 +57,8 @@ class SubjectsController < ApplicationController
   
   private
   def subject_params
-    params.require(:subject).permit(:name, :description)
+    params.require(:subject).permit(:name, :description, 
+                                    tasks_attributes: [:name])
   end
   
 end
