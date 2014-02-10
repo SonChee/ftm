@@ -6,7 +6,6 @@
         <ul class="nav pull-right">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
-
           <%if signed_in? %>
               <% if current_user.permission == 3%>
                   <li><%= link_to "Admins", admin_supervisors_path  %></li>

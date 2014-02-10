@@ -8,35 +8,54 @@
 # ruby encoding: utf-8
 
 
-User.create(:name => 'Admin',
+User.create(:name => 'Larry Pham',
             :email => 'larryritchie.ceo@gmail.com',
-            :profile => 'Site Administrator',
+            :profile => 'Product Manager',
             :permission => 3,
             :password => 'admin1234!',
             :password_confirmation => 'admin1234!')
 
-User.create(:name => 'Supervisor',
+User.create(:name => 'Kelly Chan',
             :email => 'kellychan@gmail.com',
-            :profile => 'Site Supervisor',
+            :profile => 'Business Operation',
             :permission => 2,
             :password => 'supervisor1234!',
             :password_confirmation => 'supervisor1234!')
 
-User.create(:name => 'Trainee',
-            :email => 'kellylane@gmail.com',
+User.create(:name => 'Wei Ming',
+            :email => 'wei.ming@gmail.com',
+            :profile => 'Software Engineer',
+            :permission => 1,
+            :password => 'trainee1234!',
+            :password_confirmation => 'trainee1234!')
+User.create(:name => 'Mike Kelly',
+            :email => 'mike.kelly.ceo@gmail.com',
+            :profile => 'Productive Manager',
+            :permission => 3,
+            :password => 'admin1234!',
+            :password_confirmation => 'admin1234!')
+
+User.create(:name => 'Linda Cho',
+            :email => 'linda.cho@gmail.com',
+            :profile => 'Software Engineer',
+            :permission => 2,
+            :password => 'supervisor1234!',
+            :password_confirmation => 'supervisor1234!')
+
+User.create(:name => 'James Lee',
+            :email => 'james.lee@gmail.com',
             :profile => 'Site Trainee',
             :permission => 1,
             :password => 'trainee1234!',
             :password_confirmation => 'trainee1234!')
-
 course_list = [
-                ["Training 20131201", "Khóa training 01/12/2013"],
-                ["Training 20140102", "Khóa training 02/01/2014"],
-                ["Training 20140205", "Khóa training 05/02/2014"]
+                ["Training 20131201", "Khóa training 01/12/2013", 1],
+                ["Training 20140102", "Khóa training 02/01/2014", 2],
+                ["Training 20140205", "Khóa training 05/02/2014", 3]
               ]
               
 course_list.each do |c|
-  Course.create(name: c[0], description: c[1])
+  Course.create(name: c[0], description: c[1], status: c[2])
 end
 
 
@@ -111,14 +130,14 @@ coursesubject_list.each do |cs|
 end
 
 assignment_list = [
-                    [1, 2, 2],
-                    [2, 2, 2],
-                    [3, 2, 2], 
-                    [6, 1, 3]
+                    [1, 2, 2, 1],
+                    [2, 2, 2, 2],
+                    [3, 2, 2, 2],
+                    [6, 1, 3, 3]
                   ]
 
 assignment_list.each do |as|
-  Assignment.create(user_id: as[0], course_id: as[1], status_id: as[2])
+  Assignment.create(user_id: as[0], course_id: as[1], status_id: as[2], status: [3])
 end
 
 assignment_subject_list = [

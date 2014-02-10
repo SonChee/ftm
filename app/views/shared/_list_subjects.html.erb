@@ -1,7 +1,8 @@
+<% if current_user.permission == 1 %>
 <h5>Course Name : <%= @course.name %></h5>
 <h5>Course Description : <%= @course.description %></h5>
 
-<% unless current_user.assignment.nil? %>
+<% unless current_user.assignments.nil? %>
   <div class="list_subject">
     <% current_user.assignment.assignment_subjects.each do |assignment_subject| %>
       <div class="subject-name" id="__subject_<%= assignment_subject.id %>" data-assignmentsubjectid="<%= assignment_subject.id %>" data-subjectid="<%= assignment_subject.subject.id %>" data-statusid="<%= assignment_subject.status_id %>" style="color:blue"><%= assignment_subject.subject.name %></div>
@@ -54,3 +55,4 @@ function changeSubjectColor(assignment_subject_id, status_id) {
   $('#__subject_' + assignment_subject_id).css('background-color', bcolor);
 }
 </script>
+<% end %>
