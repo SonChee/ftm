@@ -2,7 +2,6 @@ Ftm::Application.routes.draw do
 
   root to: 'static_pages#index'
   resources :sessions,  only: [:new, :create, :destroy]
-  resources :courses, only: [:index, :show]
 
   namespace :admin do
 

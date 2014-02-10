@@ -24,14 +24,17 @@ class Supervisor::CoursesController < ApplicationController
   end
 
   def destroy
-    @course = Course.find params[:id]
-    @course.destroy
+    course = Course.find params[:id]
 
-    rescue ActiveRecord::RecordNotFound
-
-    respond_to do |format|
-      format.html { redirect_to supervisor_courses_path}
-      format.json { head :no_content }
+    if !course.nil?
+      if course.destroy
+        flash[:notice] = "Success destroyed"
+      else
+        flash[:notice] = "Destroy Failed"
+      end
+      redirect_to supervisor_courses_path
+    else
+      redirect_to root_path
     end
   end
 
