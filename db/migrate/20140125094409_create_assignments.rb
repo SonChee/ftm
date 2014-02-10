@@ -5,6 +5,8 @@ class CreateAssignments < ActiveRecord::Migration
       t.integer :course_id
       t.integer :status_id
 
+      t.integer :status, default: 1
+
       t.timestamps
     end
   end

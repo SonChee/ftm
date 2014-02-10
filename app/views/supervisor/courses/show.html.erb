@@ -1,0 +1,53 @@
+<%= provide(:title, "Course Details") %>
+<h1><%= yield(:title) %></h1>
+
+<% provide(:title, @course.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <b> Course Name: </b>
+
+      <p><%= @course.name %></p>
+      <b>Course Description:</b>
+
+      <p><%= @course.description %></p>
+
+      <% case @course.status %>
+        <% when 3%>
+           <p>Status: Finished</p>
+        <% when 2%>
+        <p>Status: Started</p>
+        <% when 1%>
+        <p>Status: Opened</p>
+      <% end %>
+    </section>
+  </aside>
+
+  <div class="span8">
+    <% if @course_subjects.any? %>
+        <h3>Subjects</h3>
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th>Subject ID</th>
+            <th>Subject's Name</th>
+            <th>Subject's Description</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @course_subjects.each do |course_subject| %>
+              <tr>
+                <td><%= course_subject.subject.id %></td>
+                <td><%= link_to course_subject.subject.name, course_subject.subject %></td>
+                <td><%= course_subject.subject.description %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+    <% end %>
+  </div>
+  <div class="span8">
+    <%= render 'shared/users_details_in_course' %>
+  </div>
+</div>
+<%= link_to 'Back', supervisor_courses_path %>

@@ -1,18 +1,18 @@
 Ftm::Application.routes.draw do
-  root "static_pages#home"
 
+  root to: 'static_pages#index'
   resources :sessions,  only: [:new, :create, :destroy]
+  resources :courses, only: [:index, :show]
 
   namespace :admin do
-
 
     resources :supervisors
   end
 
   namespace :supervisor do
 
-    resources :trainees
     resources :courses
+    resources :trainees
   end
 
   resources :users
