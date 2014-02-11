@@ -1,2 +1,4 @@
 <%= provide(:title, "Add new course") %>
-<h1>New Course</h1>
+<h1><%= yield(:title) %></h1>
+<%= render 'course' %>
+<%= link_to 'Back', supervisor_courses_path %>

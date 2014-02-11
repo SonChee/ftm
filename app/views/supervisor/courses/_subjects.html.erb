@@ -1,0 +1,19 @@
+<h3>Adding subjects to this course</h3>
+<table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+    <th>Add</th>
+    <th>Subject's Name</th>
+    <th>Subject's Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% Subject.all.each do |subject| %>
+    <tr>
+      <td><%= check_box_tag 'ids[]', subject.id %></td>
+      <td><%= link_to subject.name, subject %></td>
+      <td><%= subject.description %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

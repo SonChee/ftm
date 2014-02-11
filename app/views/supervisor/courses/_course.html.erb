@@ -1,0 +1,32 @@
+<%= form_for([:supervisor, @course], html: {class: 'form-horizontal'}) do |f| %>
+<div class="row">
+<div class="span6">
+        <%= render 'shared/error_messages', object: f.object %>
+      <div class="control-group">
+        <h3 class="control-lable">Course's Information </h3>
+      </div>
+      <div class="control-group">
+        <b class="control-label">Name:</b>
+         <div class="controls">
+           <%= f.text_field :name %>
+         </div>
+      </div>
+
+      <div class="control-group">
+        <b class="control-label">Description:</b>
+        <div class="controls">
+          <%= f.text_area :description, cols: "100", rows: "5" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit "Submit", class: "btn btn-medium btn-info" %>
+        </div>
+      </div>
+</div>
+<div class="span6">
+    <%= render :partial => 'subjects'%>
+</div>
+</div>
+
+<% end %>
