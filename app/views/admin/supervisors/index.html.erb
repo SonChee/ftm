@@ -1,0 +1,30 @@
+<% if admin_user? current_user %>
+<% provide(:title, 'Supervisor list') %>
+<h1>Supervisor list</h1>
+
+<%= link_to '+ Add supervisor', new_admin_supervisor_path, class: "btn btn-medium btn-primary"%></td>
+
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th>Supervisor ID</th>
+      <th>Supervisor Name</th>
+      <th>Supervisor Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @supervisors.each do |supervisor| %>
+    <tr>
+      <td><%= supervisor.id %></td>
+      <td><%= link_to supervisor.name, admin_supervisor_path(supervisor) %></td>
+      <td><%= supervisor.email%></td>
+      <td><%= link_to "Delete", supervisor, method: :delete,
+              data: { confirm: "You sure?" }, title: supervisor.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+  </tfoot>
+</table>
+<% end %>
