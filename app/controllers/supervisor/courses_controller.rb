@@ -52,5 +52,9 @@ class Supervisor::CoursesController < ApplicationController
       redirect_to root_path
     end
   end
+  private
+  def course_params
+    params.require(:subject).permit(:name, :description, :status)
+  end
 
 end
