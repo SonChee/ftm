@@ -1,4 +1,6 @@
 <h3>Enrolled users into this course</h3>
+<%= link_to 'Assignment Supervisor', new_supervisor_course_assignment_path(@course), class: "btn btn-medium btn-primary"%>
+
 <% if @assignments.any? %>
     <table class="table table-hover">
       <thead>

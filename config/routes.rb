@@ -9,8 +9,9 @@ Ftm::Application.routes.draw do
   end
 
   namespace :supervisor do
-
-    resources :courses
+    resources :courses do
+      resources :assignments
+    end
     resources :trainees
   end
 
