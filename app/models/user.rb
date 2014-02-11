@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, length: { minimum: 6 }, if: :validate_password
 
-  scope :admin_users, -> { where(permission: 3)}
-  scope :supervisor_users, -> { where(permission: 2)}
-  scope :tranee_users, -> { where(permission: 1)}
+  scope :admins, -> { where(permission: 3)}
+  scope :supervisors, -> { where(permission: 2)}
+  scope :tranees, -> { where(permission: 1)}
 
   has_many :assignments
   has_one :assignment, -> { where(status_id: 2)}

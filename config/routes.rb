@@ -4,7 +4,7 @@ Ftm::Application.routes.draw do
   resources :sessions,  only: [:new, :create, :destroy]
 
   namespace :admin do
-
+    resources :users
     resources :supervisors
   end
 

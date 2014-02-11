@@ -28,6 +28,18 @@ module SessionsHelper
   def current_user? user
     user == current_user
   end
+  
+  def admin_user? user
+    user.permission == 3
+  end
+  
+  def suppervisor_user? user
+    user.permission == 2
+  end
+  
+  def trainee_user? user
+    user.permission == 1
+  end
 
   def signed_in?
     !current_user.nil?
