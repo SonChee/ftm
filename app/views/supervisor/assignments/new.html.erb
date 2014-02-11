@@ -1,0 +1,51 @@
+<%= form_for @assignment, as: :assignment, url: supervisor_course_assignments_path do |f| %>
+
+  <%= hidden_field_tag "course_id", @course.id %>
+  <aside class="span4">
+    <section>
+      <b> Course Name: </b>
+
+      <p><%= @course.name %></p>
+      <b>Course Description:</b>
+
+      <p><%= @course.description %></p>
+
+      <% case @course.status %>
+        <% when 3%>
+           <p>Status: Finished</p>
+        <% when 2%>
+        <p>Status: Started</p>
+        <% when 1%>
+        <p>Status: Opened</p>
+      <% end %>
+    </section>
+  </aside>
+
+  <div class="span8">
+	<h1>Supervisor</h1>
+	<% if @supervisors.any? %>
+	    <table class="table table-hover">
+	      <thead>
+	      <tr>
+	      	<th>Select</th>
+	        <th>Name</th>
+	        <th>Email</th>
+	        <th>Profile</th>
+	      </tr>
+	      </thead>
+	      <% @supervisors.each do |supervisor| %>
+	          <tbody>
+	          <tr>
+	          	<td><%= check_box_tag "supervisor_ids[]", supervisor.id %></td>
+	            <td><%= link_to supervisor.name, supervisor %></td>
+	            <td><%= supervisor.email %></td>
+	            <td><%= supervisor.profile %></td>
+	          </tr>
+	          </tbody>
+	      <% end %>
+	    </table>
+	<% end %>
+	<%= f.submit "Assignment Supervisor", class: "btn btn-primary" %>
+  </div>
+  
+<% end %>
