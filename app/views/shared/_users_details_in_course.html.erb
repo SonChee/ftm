@@ -8,6 +8,7 @@
         <th>Name</th>
         <th>Email</th>
         <th>Bio</th>
+        <th>Edit</th>
       </tr>
       </thead>
       <% @assignments.each do |assignment| %>
@@ -16,6 +17,7 @@
             <td><%= link_to assignment.user.name, assignment.user %></td>
             <td><%= assignment.user.email %></td>
             <td><%= assignment.user.profile %></td>
+            <td><%= link_to "Edit", edit_supervisor_trainee_path(assignment.user.id) %></td>
           </tr>
           </tbody>
       <% end %>
